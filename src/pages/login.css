@@ -65,3 +65,9 @@
 .btn:hover {
     background: #0984e3;
 }
+
+@media only screen and (max-width: 600px) {
+    .auth-content {
+        width: 85%;
+    }
+}
