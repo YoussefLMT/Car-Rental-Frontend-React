@@ -6,6 +6,8 @@ function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errors, setErrors] = useState({})
+    const [error, setError] = useState('')
 
     const login = async (e) => {
         e.preventDefault()
@@ -17,6 +19,10 @@ function Login() {
 
         if (response.data.status === 200) {
             alert(response.data.message)
+        } else if (response.data.status === 401) {
+            setError(response.data.message)
+        } else {
+            setErrors(response.data.validation_err)
         }
     }
 
