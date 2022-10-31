@@ -7,20 +7,20 @@ function Login() {
     const [password, setPassword] = useState('')
 
     return (
-        <section class="main">
-            <div class="auth-content">
+        <section className="main">
+            <div className="auth-content">
                 <form>
-                    <h2 class="form-title">Login</h2>
+                    <h2 className="form-title">Login</h2>
                     <div>
                         <label>Email</label>
-                        <input type="email" value={email} name="email" class="text-input" />
+                        <input type="email" value={email} onChange={ (e) => setEmail(e.target.value)} name="email" className="text-input" />
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" value={password} name="password" class="text-input" />
+                        <input type="password" value={password} onChange={ (e) => setPassword(e.target.value)} name="password" className="text-input" />
                     </div>
                     <div>
-                        <button type="button" class="btn">Login</button>
+                        <button type="button" className="btn">Login</button>
                     </div>
                 </form>
             </div >
