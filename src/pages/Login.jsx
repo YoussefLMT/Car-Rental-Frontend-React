@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../axios'
 import './login.css'
 
@@ -8,6 +9,7 @@ function Login() {
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState({})
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const login = async (e) => {
         e.preventDefault()
@@ -19,7 +21,7 @@ function Login() {
 
         if (response.data.status === 200) {
             localStorage.setItem('token', response.data.token);
-
+            navigate('/dashboard')
         } else if (response.data.status === 401) {
             setError(response.data.message)
         } else {
