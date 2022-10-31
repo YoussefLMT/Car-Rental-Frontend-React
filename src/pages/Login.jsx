@@ -18,7 +18,8 @@ function Login() {
         })
 
         if (response.data.status === 200) {
-            alert(response.data.message)
+            localStorage.setItem('token', response.data.token);
+
         } else if (response.data.status === 401) {
             setError(response.data.message)
         } else {
@@ -31,13 +32,20 @@ function Login() {
             <div className="auth-content">
                 <form onSubmit={login}>
                     <h2 className="form-title">Login</h2>
+                    {
+                        error && <div className="alert alert-danger">
+                            {error}
+                        </div>
+                    }
                     <div>
                         <label>Email</label>
                         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" className="text-input" />
+                        <span className="text-danger">{errors.email}</span>
                     </div>
                     <div>
                         <label>Password</label>
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" className="text-input" />
+                        <span className="text-danger">{errors.password}</span>
                     </div>
                     <div>
                         <button type="submit" className="btn">Login</button>
