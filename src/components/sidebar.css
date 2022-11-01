@@ -4,16 +4,14 @@
     box-sizing: border-box;
 }
 
-.test {
-    display: flex;
-}
-
 .sidebar-container {
     display: flex;
 }
 
-.tt {
+.content {
     margin-left: 270px;
+    margin-top: 15px;
+    margin-right: 20px;
 }
 
 main {
