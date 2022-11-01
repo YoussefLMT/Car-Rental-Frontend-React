@@ -19,7 +19,7 @@ main {
 }
 
 .sidebar {
-    background: #273c75;
+    background: #1e293b;
     color: #fff;
     height: 100vh;
     width: 250px;
@@ -31,12 +31,21 @@ main {
     bottom: 0;
 }
 
+.routes {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .link {
     display: flex;
     color: #fff;
     gap: 10px;
     padding: 5px 10px;
     font-size: 20px;
+    border-right: 4px solid transparent;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 a {
@@ -44,6 +53,18 @@ a {
 }
 
 .link:hover {
-    background: #130f40;
-    color: #fff;
+    border-right: 4px solid white;
+    background: #64748b;
+    color: white;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.active {
+    border-right: 4px solid white;
+    background: rgb(45, 51, 89);
+}
+
+.link_text {
+    white-space: nowrap;
+    font-size: 15px;
 }
