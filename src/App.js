@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
+import Brands from './pages/Brands';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/brands' element={<Brands />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
