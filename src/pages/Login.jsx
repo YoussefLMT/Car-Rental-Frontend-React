@@ -50,7 +50,7 @@ function Login() {
                         <span className="text-danger">{errors.password}</span>
                     </div>
                     <div>
-                        <button type="submit" className="btn">Login</button>
+                        <button type="submit" className="login-btn">Login</button>
                     </div>
                 </form>
             </div >
