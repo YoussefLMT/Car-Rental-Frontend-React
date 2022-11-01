@@ -14,10 +14,6 @@
     margin-right: 20px;
 }
 
-main {
-    padding: 20px;
-}
-
 .sidebar {
     background: #1e293b;
     color: #fff;
@@ -41,15 +37,11 @@ main {
 .link {
     display: flex;
     color: #fff;
-    gap: 10px;
+    gap: 15px;
     padding: 5px 10px;
     font-size: 20px;
     border-right: 4px solid transparent;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-}
-
-a {
-    text-decoration: none;
 }
 
 .link:hover {
@@ -59,12 +51,20 @@ a {
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.active {
-    border-right: 4px solid white;
-    background: rgb(45, 51, 89);
+.link .icon {
+    margin-left: 10px;
+    font-size: 25px;
 }
 
-.link_text {
-    white-space: nowrap;
-    font-size: 15px;
+.link .text {
+    margin-top: 6px;
 }
+
+a {
+    text-decoration: none;
+}
+
+/* .active {
+    border-right: 4px solid white;
+    background: rgb(45, 51, 89);
+} */
