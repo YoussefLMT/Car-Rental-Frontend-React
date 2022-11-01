@@ -18,9 +18,8 @@ function Brands() {
                     </div>
                 </div>
 
-
                 {/* Add Brand Modal  */}
-                <div className="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="addBrandModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -30,7 +29,7 @@ function Brands() {
                             <div className="modal-body">
                                 <form>
                                     <div className="mb-3">
-                                        <label for="name" className="form-label">Name</label>
+                                        <label htmlFor="name" className="form-label">Name</label>
                                         <input type="text" className="form-control" id="name" />
                                     </div>
                                 </form>
