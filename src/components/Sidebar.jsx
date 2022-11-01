@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillDashboard } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
+import { GiCarWheel } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 
@@ -10,7 +11,11 @@ const sidebarData = [
         name: "dashboard",
         icon: <AiFillDashboard />,
     },
-
+    {
+        path: "/brands",
+        name: "brands",
+        icon: <GiCarWheel />,
+    },
     {
         path: "/users",
         name: "users",
