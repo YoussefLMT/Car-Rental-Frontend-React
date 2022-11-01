@@ -17,9 +17,25 @@ const sidebarData = [
 ];
 
 function Sidebar() {
-  return (
-    <div>Sidebar</div>
-  )
+    return (
+        <div className="sidebar-container">
+            <div className="sidebar">
+                <section className="routes">
+                    {sidebarData.map((data) => (
+                        <Link to={data.path} key={data.name} className="link">
+                            <div className="icon">
+                                {data.icon}
+                            </div>
+
+                            <div className="text">
+                                {data.name}
+                            </div>
+                        </Link>
+                    ))}
+                </section>
+            </div>
+        </div>
+    )
 }
 
 export default Sidebar
