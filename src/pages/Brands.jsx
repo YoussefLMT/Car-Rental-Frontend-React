@@ -34,10 +34,7 @@ function Brands() {
         getBrands()
     }, [])
 
-    // if(loading){
-    //     return <h1>Loading...</h1>
-    // }
-
+    
     return (
         <>
             <Sidebar />
@@ -66,7 +63,7 @@ function Brands() {
                                     loading ? <h4>Loading...</h4> :
                                         brands.map((brand) => {
                                             return (
-                                                <tr>
+                                                <tr key={brand.id}>
                                                 <th scope="row">{brand.id}</th>
                                                 <td>{brand.name}</td>
                                                 </tr>
