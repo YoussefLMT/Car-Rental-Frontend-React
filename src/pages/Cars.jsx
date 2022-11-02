@@ -14,6 +14,10 @@ function Cars() {
         error_list: [],
     });
 
+    const handleChange = (e) => {
+        setData(e.target.value);
+    }
+
 
     return (
         <>
@@ -43,14 +47,14 @@ function Cars() {
                                         <form>
                                             <div className="mb-3">
                                                 <label htmlFor="name" className="form-label">Name</label>
-                                                <input type="text" value={data.name} className="form-control" id="name" />
+                                                <input type="text" value={data.name} onChange={handleChange} className="form-control" id="name" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="model" className="form-label">Model Year</label>
-                                                <input type="text" value={data.model_year} className="form-control" id="model" />
+                                                <input type="text" value={data.model_year} onChange={handleChange} className="form-control" id="model" />
                                             </div>
                                             <div className="mb-3">
-                                                <select class="form-select" value={data.brand} aria-label="Default select example">
+                                                <select class="form-select" value={data.brand} onChange={handleChange} aria-label="Default select example">
                                                     <option selected>Brand</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
@@ -59,15 +63,15 @@ function Cars() {
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="color" className="form-label">Color</label>
-                                                <input type="text" value={data.color} className="form-control" id="color" />
+                                                <input type="text" value={data.color} onChange={handleChange} className="form-control" id="color" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="capacity" className="form-label">Capacity</label>
-                                                <input type="text" value={data.capacity} className="form-control" id="capacity" />
+                                                <input type="text" value={data.capacity} onChange={handleChange} className="form-control" id="capacity" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="plat" className="form-label">Plat Number</label>
-                                                <input type="text" value={data.plat_number} className="form-control" id="plat" />
+                                                <input type="text" value={data.plat_number} onChange={handleChange} className="form-control" id="plat" />
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="submit" className="btn btn-primary">Save changes</button>
