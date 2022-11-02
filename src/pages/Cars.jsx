@@ -5,19 +5,20 @@ import './styles/cars.css'
 
 function Cars() {
 
-    const [data, setData] = useState({
+    const [form, setForm] = useState({
         name: '',
         model_year: '',
         brand: '',
         color: '',
         capacity: '',
-        plat_number: '',
+        plate_number: '',
         error_list: [],
     });
     const [brands, setBrands] = useState([])
 
     const handleChange = (e) => {
-        setData(e.target.value);
+        e.persist();
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
     const getBrands = async () => {
@@ -28,6 +29,32 @@ function Cars() {
     useEffect(() => {
         getBrands()
     }, [])
+
+    const addNewCar = async (e) => {
+        e.preventDefault();
+
+        const data = {
+            name: form.name,
+            model_year: form.model_year,
+            brand: form.brand,
+            color: form.color,
+            capacity: form.capacity,
+            plate_number: form.plate_number
+        }
+
+        const response = await axiosInstance.post('/add-car', data)
+
+        if (response.data.status === 200) {
+
+            alert(response.data.status)
+
+        }
+
+        else {
+            setForm({ ...form, error_list: response.data.validation_err });
+        }
+
+    }
 
 
     return (
@@ -55,22 +82,22 @@ function Cars() {
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        <form>
+                                        <form onSubmit={addNewCar}>
                                             <div className="mb-3">
                                                 <label htmlFor="name" className="form-label">Name</label>
-                                                <input type="text" value={data.name} onChange={handleChange} className="form-control" id="name" />
+                                                <input type="text" name='name' value={form.name} onChange={handleChange} className="form-control" id="name" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="model" className="form-label">Model Year</label>
-                                                <input type="text" value={data.model_year} onChange={handleChange} className="form-control" id="model" />
+                                                <input type="text" name='model_year' value={form.model_year} onChange={handleChange} className="form-control" id="model" />
                                             </div>
                                             <div className="mb-3">
-                                                <select class="form-select" value={data.brand} onChange={handleChange} aria-label="Default select example">
+                                                <select class="form-select" name='brand' value={form.brand} onChange={handleChange} aria-label="Default select example">
                                                     <option selected>Brand</option>
                                                     {
                                                         brands.map((brand) => {
                                                             return (
-                                                                <option value={brand.name} key={brand.id}>{brand.name}</option> 
+                                                                <option value={brand.name} key={brand.id}>{brand.name}</option>
                                                             )
                                                         })
                                                     }
@@ -78,15 +105,15 @@ function Cars() {
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="color" className="form-label">Color</label>
-                                                <input type="text" value={data.color} onChange={handleChange} className="form-control" id="color" />
+                                                <input type="text" name='color' value={form.color} onChange={handleChange} className="form-control" id="color" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="capacity" className="form-label">Capacity</label>
-                                                <input type="text" value={data.capacity} onChange={handleChange} className="form-control" id="capacity" />
+                                                <input type="text" name='capacity' value={form.capacity} onChange={handleChange} className="form-control" id="capacity" />
                                             </div>
                                             <div className="mb-3">
-                                                <label htmlFor="plat" className="form-label">Plat Number</label>
-                                                <input type="text" value={data.plat_number} onChange={handleChange} className="form-control" id="plat" />
+                                                <label htmlFor="plat" className="form-label">Plate Number</label>
+                                                <input type="text" name='plate_number' value={form.plate_number} onChange={handleChange} className="form-control" id="plat" />
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="submit" className="btn btn-primary">Save changes</button>
