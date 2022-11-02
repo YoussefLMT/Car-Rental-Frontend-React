@@ -67,9 +67,13 @@ function Cars() {
                                             <div className="mb-3">
                                                 <select class="form-select" value={data.brand} onChange={handleChange} aria-label="Default select example">
                                                     <option selected>Brand</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    {
+                                                        brands.map((brand) => {
+                                                            return (
+                                                                <option value={brand.name} key={brand.id}>{brand.name}</option> 
+                                                            )
+                                                        })
+                                                    }
                                                 </select>
                                             </div>
                                             <div className="mb-3">
