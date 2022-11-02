@@ -1,7 +1,7 @@
 import React from 'react'
-import { AiFillDashboard } from 'react-icons/ai';
+import { AiFillDashboard, AiFillCar } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
-import { GiCarWheel } from 'react-icons/gi';
+import { FaCarSide } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 
@@ -14,7 +14,12 @@ const sidebarData = [
     {
         path: "/brands",
         name: "brands",
-        icon: <GiCarWheel />,
+        icon: <FaCarSide />,
+    },
+    {
+        path: "/cars",
+        name: "cars",
+        icon: <AiFillCar />,
     },
     {
         path: "/users",
