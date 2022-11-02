@@ -1,15 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import axiosInstance from '../axios';
 
 function CarsTable(props) {
 
     const deleteCar = async (e, id) => {
         const deleteBtn = e.currentTarget;
-
         try {
             await axiosInstance.delete(`/delete-car/${id}`)
             deleteBtn.closest('tr').remove();
-
         } catch (error) {
             console.log(error)
         }
@@ -44,6 +43,7 @@ function CarsTable(props) {
                                 <td>{car.plate_number}</td>
                                 <td>
                                     <button type="button" onClick={(e) => deleteCar(e, car.id)} class="btn btn-danger">Delete</button>
+                                    <Link title="Modifier l'animateur" className="btn btn-warning" to={`update-car/${car.id}`}>Update</Link>              
                                 </td>
                             </tr>
                         )

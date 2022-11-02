@@ -5,11 +5,9 @@ function BrandsTable(props) {
 
     const deleteBrand = async (e, id) => {
         const deleteBtn = e.currentTarget;
-
         try {
             await axiosInstance.delete(`/delete-brand/${id}`)
             deleteBtn.closest('tr').remove();
-
         } catch (error) {
             console.log(error)
         }
