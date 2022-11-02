@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axiosInstance from '../axios';
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
 
@@ -13,10 +14,20 @@ function Cars() {
         plat_number: '',
         error_list: [],
     });
+    const [brands, setBrands] = useState([])
 
     const handleChange = (e) => {
         setData(e.target.value);
     }
+
+    const getBrands = async () => {
+        const response = await axiosInstance.get('brands')
+        setBrands(response.data.brands)
+    }
+
+    useEffect(() => {
+        getBrands()
+    }, [])
 
 
     return (
