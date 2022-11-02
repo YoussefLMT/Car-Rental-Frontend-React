@@ -20,6 +20,7 @@ function Brands() {
 
         if (response.data.status === 200) {
             setMessage(response.data.message)
+            getBrands()
         } else {
             setErrors(response.data.validation_err)
         }
@@ -79,13 +80,14 @@ function Brands() {
                                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="name" />
                                         <span className="text-danger">{errors.name}</span>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Save changes</button>
+                                    <div className="modal-footer">
+                            <button type="submit" className="btn btn-primary">Save changes</button>
 
-                                </form>
-                            </div>
-                            <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
