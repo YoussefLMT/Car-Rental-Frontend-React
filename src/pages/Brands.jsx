@@ -1,13 +1,27 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import './styles/brands.css'
+import axiosInstance from '../axios'
 
 
 function Brands() {
 
     const [name, setName] = useState('')
+    const [message, setMessage] = useState('')
+    const [errors, setErrors] = useState({})
 
-    console.log(name)
+    const addNewBrand = async (e) => {
+        e.preventDefault()
+
+        const response = await axiosInstance.post('/add-brand', { name: name })
+
+        if (response.data.status === 200) {
+            setMessage(response.data.message)
+        } else {
+            setErrors(response.data.validation_err)
+        }
+    }
+
 
     return (
         <>
@@ -34,7 +48,7 @@ function Brands() {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <form>
+                                <form onSubmit={addNewBrand}>
                                     <div className="mb-3">
                                         <label htmlFor="name" className="form-label">Name</label>
                                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="name" />
