@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import './styles/brands.css'
 import axiosInstance from '../axios'
@@ -9,6 +9,8 @@ function Brands() {
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
     const [errors, setErrors] = useState({})
+    const [brands, setBrands] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const addNewBrand = async (e) => {
         e.preventDefault()
@@ -22,6 +24,19 @@ function Brands() {
         }
     }
 
+    const getBrands = async () => {
+        const response = await axiosInstance.get('brands')
+        setBrands(response.data.brands)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        getBrands()
+    }, [])
+
+    // if(loading){
+    //     return <h1>Loading...</h1>
+    // }
 
     return (
         <>
