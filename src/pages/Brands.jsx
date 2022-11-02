@@ -49,15 +49,22 @@ function Brands() {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={addNewBrand}>
+                                    {
+                                        message && <div className="alert alert-success">
+                                            {message}
+                                        </div>
+                                    }
                                     <div className="mb-3">
                                         <label htmlFor="name" className="form-label">Name</label>
                                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="name" />
+                                        <span className="text-danger">{errors.name}</span>
                                     </div>
+                                    <button type="submit" className="btn btn-primary">Save changes</button>
+
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
