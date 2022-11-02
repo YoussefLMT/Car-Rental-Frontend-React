@@ -11,7 +11,7 @@ function Cars() {
 
              <div className="card brands" style={{ width: "1100px" }}>
                     <div className="card-header">
-                        Brands Managment
+                        Cars Management
                     </div>   
              </div>        
             </div>

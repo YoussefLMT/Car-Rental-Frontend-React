@@ -36,7 +36,7 @@ function Brands() {
         getBrands()
     }, [])
 
-    
+
     return (
         <>
             <Sidebar />
@@ -44,7 +44,7 @@ function Brands() {
                 <h1>Brands</h1>
                 <div className="card brands" style={{ width: "1100px" }}>
                     <div className="card-header">
-                        Brands Managment
+                        Brands Management
 
                         {/* Button trigger add brands modal  */}
                         <button type="button" className="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#addBrandModal">
@@ -52,7 +52,7 @@ function Brands() {
                         </button>
                     </div>
                     <div class="card-body">
-                        <BrandsTable brands={brands}/>
+                        <BrandsTable brands={brands} />
 
                         {loading && <h4>Loading...</h4>}
 
@@ -81,13 +81,12 @@ function Brands() {
                                         <span className="text-danger">{errors.name}</span>
                                     </div>
                                     <div className="modal-footer">
-                            <button type="submit" className="btn btn-primary">Save changes</button>
-
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
+                                        <button type="submit" className="btn btn-primary">Save changes</button>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
