@@ -15,6 +15,7 @@ function Cars() {
         error_list: [],
     });
     const [brands, setBrands] = useState([])
+    const [message, setMessage] = useState('')
 
     const handleChange = (e) => {
         e.persist();
@@ -45,15 +46,10 @@ function Cars() {
         const response = await axiosInstance.post('/add-car', data)
 
         if (response.data.status === 200) {
-
-            alert(response.data.status)
-
-        }
-
-        else {
+            setMessage(response.data.message)
+        } else {
             setForm({ ...form, error_list: response.data.validation_err });
         }
-
     }
 
 
@@ -83,13 +79,20 @@ function Cars() {
                                     </div>
                                     <div className="modal-body">
                                         <form onSubmit={addNewCar}>
+                                            {
+                                                message && <div className="alert alert-success">
+                                                    {message}
+                                                </div>
+                                            }
                                             <div className="mb-3">
                                                 <label htmlFor="name" className="form-label">Name</label>
                                                 <input type="text" name='name' value={form.name} onChange={handleChange} className="form-control" id="name" />
+                                                <span className='text-danger'>{form.error_list.name}</span>
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="model" className="form-label">Model Year</label>
                                                 <input type="text" name='model_year' value={form.model_year} onChange={handleChange} className="form-control" id="model" />
+                                                <span className='text-danger'>{form.error_list.model_year}</span>
                                             </div>
                                             <div className="mb-3">
                                                 <select class="form-select" name='brand' value={form.brand} onChange={handleChange} aria-label="Default select example">
@@ -102,18 +105,22 @@ function Cars() {
                                                         })
                                                     }
                                                 </select>
+                                                <span className='text-danger'>{form.error_list.brand}</span>
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="color" className="form-label">Color</label>
                                                 <input type="text" name='color' value={form.color} onChange={handleChange} className="form-control" id="color" />
+                                                <span className='text-danger'>{form.error_list.color}</span>
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="capacity" className="form-label">Capacity</label>
                                                 <input type="text" name='capacity' value={form.capacity} onChange={handleChange} className="form-control" id="capacity" />
+                                                <span className='text-danger'>{form.error_list.capacity}</span>
                                             </div>
                                             <div className="mb-3">
-                                                <label htmlFor="plat" className="form-label">Plate Number</label>
-                                                <input type="text" name='plate_number' value={form.plate_number} onChange={handleChange} className="form-control" id="plat" />
+                                                <label htmlFor="plate" className="form-label">Plate Number</label>
+                                                <input type="text" name='plate_number' value={form.plate_number} onChange={handleChange} className="form-control" id="plate" />
+                                                <span className='text-danger'>{form.error_list.plate_number}</span>
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="submit" className="btn btn-primary">Save changes</button>
