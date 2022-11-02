@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BrandsTable() {
+function BrandsTable(props) {
     return (
         <table class="table">
             <thead>
@@ -12,7 +12,7 @@ function BrandsTable() {
             </thead>
             <tbody>
                 {
-                        brands.map((brand) => {
+                        props.brands.map((brand) => {
                             return (
                                 <tr key={brand.id}>
                                     <th scope="row">{brand.id}</th>

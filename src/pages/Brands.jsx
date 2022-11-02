@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import './styles/brands.css'
 import axiosInstance from '../axios'
+import BrandsTable from '../components/BrandsTable'
 
 
 function Brands() {
@@ -50,7 +51,10 @@ function Brands() {
                         </button>
                     </div>
                     <div class="card-body">
-                        
+                        <BrandsTable brands={brands}/>
+
+                        {loading && <h4>Loading...</h4>}
+
                     </div>
                 </div>
 
