@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
 
 function Cars() {
+
+    const [data, setData] = useState({
+        name: '',
+        model_year: '',
+        brand: '',
+        color: '',
+        capacity: '',
+        plat_number: '',
+        error_list: [],
+    });
+
+
     return (
         <>
             <Sidebar />
@@ -19,7 +31,6 @@ function Cars() {
                         </button>
 
 
-
                         {/* Add Car Modal  */}
                         <div className="modal fade" id="addCarModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
@@ -32,14 +43,14 @@ function Cars() {
                                         <form>
                                             <div className="mb-3">
                                                 <label htmlFor="name" className="form-label">Name</label>
-                                                <input type="text" className="form-control" id="name" />
+                                                <input type="text" value={data.name} className="form-control" id="name" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="model" className="form-label">Model Year</label>
-                                                <input type="text" className="form-control" id="model" />
+                                                <input type="text" value={data.model_year} className="form-control" id="model" />
                                             </div>
                                             <div className="mb-3">
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" value={data.brand} aria-label="Default select example">
                                                     <option selected>Brand</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
@@ -48,15 +59,15 @@ function Cars() {
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="color" className="form-label">Color</label>
-                                                <input type="text" className="form-control" id="color" />
+                                                <input type="text" value={data.color} className="form-control" id="color" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="capacity" className="form-label">Capacity</label>
-                                                <input type="text" className="form-control" id="capacity" />
+                                                <input type="text" value={data.capacity} className="form-control" id="capacity" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="plat" className="form-label">Plat Number</label>
-                                                <input type="text" className="form-control" id="plat" />
+                                                <input type="text" value={data.plat_number} className="form-control" id="plat" />
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="submit" className="btn btn-primary">Save changes</button>
