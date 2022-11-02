@@ -55,7 +55,6 @@ function Brands() {
                         <BrandsTable brands={brands} />
 
                         {loading && <h4>Loading...</h4>}
-
                     </div>
                 </div>
 

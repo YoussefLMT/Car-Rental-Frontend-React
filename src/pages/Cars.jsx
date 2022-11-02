@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axios';
+import CarsTable from '../components/CarsTable';
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
 
@@ -40,8 +41,6 @@ function Cars() {
         getCars()
     }, [])
 
-    console.log(cars)
-
     const addNewCar = async (e) => {
         e.preventDefault();
 
@@ -78,7 +77,13 @@ function Cars() {
                         <button type="button" className="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#addCarModal">
                             Add Car
                         </button>
+                        </div>
+                    <div class="card-body">
+                        <CarsTable cars={cars} />
 
+                        {loading && <h4>Loading...</h4>}
+                    </div>
+                </div>
 
                         {/* Add Car Modal  */}
                         <div className="modal fade" id="addCarModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,8 +147,6 @@ function Cars() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
 
         </>
