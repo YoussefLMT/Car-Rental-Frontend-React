@@ -57,6 +57,7 @@ function Cars() {
 
         if (response.data.status === 200) {
             setMessage(response.data.message)
+            getCars()
         } else {
             setForm({ ...form, error_list: response.data.validation_err });
         }

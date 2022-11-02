@@ -26,7 +26,7 @@ function CarsTable(props) {
                                 <td>{car.brand}</td>
                                 <td>{car.color}</td>
                                 <td>{car.capacity}</td>
-                                <td>{car.pate_number}</td>
+                                <td>{car.plate_number}</td>
                             </tr>
                         )
                     })
