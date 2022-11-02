@@ -16,6 +16,8 @@ function Cars() {
     });
     const [brands, setBrands] = useState([])
     const [message, setMessage] = useState('')
+    const [cars, setCars] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const handleChange = (e) => {
         e.persist();
@@ -27,9 +29,18 @@ function Cars() {
         setBrands(response.data.brands)
     }
 
+    const getCars = async () => {
+        const response = await axiosInstance.get('cars')
+        setCars(response.data.cars)
+        setLoading(false)
+    }
+
     useEffect(() => {
         getBrands()
+        getCars()
     }, [])
+
+    console.log(cars)
 
     const addNewCar = async (e) => {
         e.preventDefault();
