@@ -52,7 +52,32 @@ function Brands() {
                             Add Brand
                         </button>
                     </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">name</th>
+                                    <th scope="col">actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    loading ? <h4>Loading...</h4> :
+                                        brands.map((brand) => {
+                                            return (
+                                                <tr>
+                                                <th scope="row">{brand.id}</th>
+                                                <td>{brand.name}</td>
+                                                </tr>
+                                            )
+                                        })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
 
                 {/* Add Brand Modal  */}
                 <div className="modal fade" id="addBrandModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,7 +109,7 @@ function Brands() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
