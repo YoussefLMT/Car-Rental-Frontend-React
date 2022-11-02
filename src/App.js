@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Brands from './pages/Brands';
+import Cars from './pages/Cars';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/brands' element={<Brands />} />
-
+          <Route path='/cars' element={<Cars />} />
         </Route>
       </Routes>
     </BrowserRouter>
