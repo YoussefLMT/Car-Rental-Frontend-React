@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import './styles/brands.css'
+
+
 function Brands() {
+
+    const [name, setName] = useState('')
+
+    console.log(name)
+
     return (
         <>
             <Sidebar />
@@ -30,7 +37,7 @@ function Brands() {
                                 <form>
                                     <div className="mb-3">
                                         <label htmlFor="name" className="form-label">Name</label>
-                                        <input type="text" className="form-control" id="name" />
+                                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="name" />
                                     </div>
                                 </form>
                             </div>
