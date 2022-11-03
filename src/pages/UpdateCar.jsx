@@ -24,6 +24,11 @@ function UpdateCar() {
     setBrands(response.data.brands)
   }
 
+  const handleChange = (e) => {
+    e.persist();
+    setForm({ ...car, [e.target.name]: e.target.value });
+  }
+
   useEffect(() => {
     getCar()
     getBrands()
@@ -42,14 +47,14 @@ function UpdateCar() {
             <form>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
-                <input type="text" value={car.name} name='name' className="form-control" id="name" />
+                <input type="text" value={car.name} onChange={handleChange} name='name' className="form-control" id="name" />
               </div>
               <div className="mb-3">
                 <label htmlFor="model" className="form-label">Model Year</label>
-                <input type="text" value={car.model_year} name='model_year' className="form-control" id="model" />
+                <input type="text" value={car.model_year} onChange={handleChange} name='model_year' className="form-control" id="model" />
               </div>
               <div className="mb-3">
-                <select class="form-select" value={car.brand} name='brand' aria-label="Default select example">
+                <select class="form-select" value={car.brand} onChange={handleChange} name='brand' aria-label="Default select example">
                   <option selected>Brand</option>
                   {
                     brands.map((brand) => {
@@ -62,15 +67,15 @@ function UpdateCar() {
               </div>
               <div className="mb-3">
                 <label htmlFor="color" className="form-label">Color</label>
-                <input type="text" value={car.color} name='color' className="form-control" id="color" />
+                <input type="text" value={car.color} onChange={handleChange} name='color' className="form-control" id="color" />
               </div>
               <div className="mb-3">
                 <label htmlFor="capacity" className="form-label">Capacity</label>
-                <input type="text" value={car.capacity} name='capacity' className="form-control" id="capacity" />
+                <input type="text" value={car.capacity} onChange={handleChange} name='capacity' className="form-control" id="capacity" />
               </div>
               <div className="mb-3">
                 <label htmlFor="plate" className="form-label">Plate Number</label>
-                <input type="text" value={car.plate_number} name='plate_number' className="form-control" id="plate" />
+                <input type="text" value={car.plate_number} onChange={handleChange} name='plate_number' className="form-control" id="plate" />
               </div>
               <button type="submit" className="btn btn-primary">Save changes</button>
             </form>
