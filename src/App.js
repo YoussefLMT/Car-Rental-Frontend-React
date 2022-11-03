@@ -18,6 +18,7 @@ function App() {
           <Route path='/cars' element={<Cars />} />
           <Route path='/update-car/:id' element={<UpdateCar />} />
         </Route>
+        
       </Routes>
     </BrowserRouter>
   );
