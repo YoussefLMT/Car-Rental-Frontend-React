@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Brands from './pages/Brands';
 import Cars from './pages/Cars';
+import UpdateCar from './pages/UpdateCar';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/brands' element={<Brands />} />
           <Route path='/cars' element={<Cars />} />
+          <Route path='/update-car/:id' element={<UpdateCar />} />
         </Route>
       </Routes>
     </BrowserRouter>
