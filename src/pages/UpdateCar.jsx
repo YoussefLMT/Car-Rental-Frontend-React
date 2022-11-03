@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
 
 function UpdateCar() {
+
+  const [car, setCar] = useState({})
+  const params = useParams()
+
+  const getCar = async () => {
+    const response = await axiosInstance.get(`get-car/${params.id}`)
+    if(response.data.status === 200){
+      setCar(response.data.car)
+    }else if(response.data.status === 404){
+      console.log(response.data.message)
+    }
+  }
+
+  useEffect(() => {
+    getCar()
+  }, [])
+
   return (
     <>
       <Sidebar />
