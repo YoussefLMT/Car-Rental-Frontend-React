@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
@@ -10,6 +11,19 @@ function UpdateCar() {
   const [brands, setBrands] = useState([])
   const [errors, setErrors] = useState([]);
   const params = useParams()
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
 
   const getCar = async () => {
     const response = await axiosInstance.get(`get-car/${params.id}`)
@@ -33,9 +47,12 @@ function UpdateCar() {
   const updateCar = async (e) => {
     e.preventDefault();
     const response = await axiosInstance.put(`update-car/${params.id}`, car)
-    if(response.data.status === 200){
-      alert(response.data.message)
-    }else if(response.data.status === 422){
+    if (response.data.status === 200) {
+      Toast.fire({
+        icon: 'success',
+        title: response.data.message
+      })
+    } else if (response.data.status === 422) {
       setErrors(response.data.validation_err)
     }
   }
