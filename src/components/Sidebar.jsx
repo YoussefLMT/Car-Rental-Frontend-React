@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiFillDashboard, AiFillCar } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
-import { FaCarSide } from 'react-icons/fa';
+import { FaCarSide, FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 
@@ -20,6 +20,11 @@ const sidebarData = [
         path: "/cars",
         name: "cars",
         icon: <AiFillCar />,
+    },
+    {
+        path: "/reservations",
+        name: "reservations",
+        icon: <FaCalendarAlt />,
     },
     {
         path: "/users",
