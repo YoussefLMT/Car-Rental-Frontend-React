@@ -8,6 +8,7 @@ function UpdateCar() {
 
   const [car, setCar] = useState({})
   const [brands, setBrands] = useState([])
+  const [errors, setErrors] = useState([]);
   const params = useParams()
 
   const getCar = async () => {
@@ -26,7 +27,17 @@ function UpdateCar() {
 
   const handleChange = (e) => {
     e.persist();
-    setForm({ ...car, [e.target.name]: e.target.value });
+    setCar({ ...car, [e.target.name]: e.target.value });
+  }
+
+  const updateCar = async (e) => {
+    e.preventDefault();
+    const response = await axiosInstance.put(`update-car/${params.id}`, car)
+    if(response.data.status === 200){
+      alert(response.data.message)
+    }else if(response.data.status === 403){
+      setErrors(response.data.validation_err)
+    }
   }
 
   useEffect(() => {
@@ -44,7 +55,7 @@ function UpdateCar() {
             Cars Management
           </div>
           <div class="card-body">
-            <form>
+            <form onSubmit={updateCar}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" value={car.name} onChange={handleChange} name='name' className="form-control" id="name" />
@@ -77,7 +88,7 @@ function UpdateCar() {
                 <label htmlFor="plate" className="form-label">Plate Number</label>
                 <input type="text" value={car.plate_number} onChange={handleChange} name='plate_number' className="form-control" id="plate" />
               </div>
-              <button type="submit" className="btn btn-primary">Save changes</button>
+              <button type="submit" className="btn btn-primary">Update</button>
             </form>
           </div>
         </div>
