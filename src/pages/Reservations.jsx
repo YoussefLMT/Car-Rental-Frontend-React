@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
 import './styles/reservations.css'
 
 function Reservations() {
+
+    const [cars, setCars] = useState([])
+
+    const getCars = async () => {
+        const response = await axiosInstance.get('/cars')
+        setCars(response.data.cars)
+    }
+
+    useEffect(() => {
+        getCars()
+    }, [])
+
     return (
         <>
             <Sidebar />
