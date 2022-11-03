@@ -5,6 +5,7 @@ import PrivateRoutes from './utils/PrivateRoutes';
 import Brands from './pages/Brands';
 import Cars from './pages/Cars';
 import UpdateCar from './pages/UpdateCar';
+import Reservations from './pages/Reservations';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/brands' element={<Brands />} />
           <Route path='/cars' element={<Cars />} />
           <Route path='cars/update-car/:id' element={<UpdateCar />} />
+          <Route path='/reservations' element={<Reservations />} />
         </Route>
         
       </Routes>
