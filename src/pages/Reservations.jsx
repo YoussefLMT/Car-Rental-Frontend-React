@@ -58,6 +58,13 @@ function Reservations() {
                                     <div className="mb-3">
                                         <select class="form-select" name='car_id' aria-label="Default select example">
                                             <option selected>Car</option>
+                                            {
+                                                cars.map((car) => {
+                                                    return (
+                                                        <option value={car.id} key={car.id}>{car.name}</option>
+                                                    )
+                                                })
+                                            }
                                         </select>
                                     </div>
                                     <div className="mb-3">
