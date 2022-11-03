@@ -6,6 +6,16 @@ import './styles/reservations.css'
 function Reservations() {
 
     const [cars, setCars] = useState([])
+    const [form, setForm] = useState({
+        first_name: '',
+        last_year: '',
+        phone: '',
+        car_id: '',
+        start_date: '',
+        end_date: '',
+        total_mount: '',
+        error_list: [],
+    });
 
     const getCars = async () => {
         const response = await axiosInstance.get('/cars')
@@ -45,18 +55,18 @@ function Reservations() {
                                 <form>
                                     <div className="mb-3">
                                         <label htmlFor="fname" className="form-label">First Name</label>
-                                        <input type="text" name='first_name' className="form-control" id="fname" />
+                                        <input type="text" value={form.first_name} onChange={handleChange} name='first_name' className="form-control" id="fname" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="lname" className="form-label">Last Name</label>
-                                        <input type="text" name='last_name' className="form-control" id="lname" />
+                                        <input type="text" value={form.last_name} onChange={handleChange} name='last_name' className="form-control" id="lname" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="phone" className="form-label">Phone</label>
-                                        <input type="text" name='phonr' className="form-control" id="phone" />
+                                        <input type="text" value={form.phone} onChange={handleChange} name='phone' className="form-control" id="phone" />
                                     </div>
                                     <div className="mb-3">
-                                        <select class="form-select" name='car_id' aria-label="Default select example">
+                                        <select class="form-select" value={form.car_id} onChange={handleChange} name='car_id' aria-label="Default select example">
                                             <option selected>Car</option>
                                             {
                                                 cars.map((car) => {
@@ -69,15 +79,15 @@ function Reservations() {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="start_date" className="form-label">Start Date</label>
-                                        <input type="date" name='start_date' className="form-control" id="start_date" />
+                                        <input type="date" value={form.start_date} onChange={handleChange} name='start_date' className="form-control" id="start_date" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="end_date" className="form-label">End Date</label>
-                                        <input type="date" name='end_date' className="form-control" id="end_date" />
+                                        <input type="date" value={form.end_date} onChange={handleChange} name='end_date' className="form-control" id="end_date" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="amount" className="form-label">Total amount</label>
-                                        <input type="text" name='total_amount' className="form-control" id="amount" />
+                                        <input type="text" value={form.total_mount} onChange={handleChange} name='total_amount' className="form-control" id="amount" />
                                     </div>
                                     <div className="modal-footer">
                                         <button type="submit" className="btn btn-primary">Save changes</button>
