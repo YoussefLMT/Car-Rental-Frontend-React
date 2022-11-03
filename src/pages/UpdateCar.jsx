@@ -35,7 +35,7 @@ function UpdateCar() {
     const response = await axiosInstance.put(`update-car/${params.id}`, car)
     if(response.data.status === 200){
       alert(response.data.message)
-    }else if(response.data.status === 403){
+    }else if(response.data.status === 422){
       setErrors(response.data.validation_err)
     }
   }
@@ -59,10 +59,12 @@ function UpdateCar() {
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" value={car.name} onChange={handleChange} name='name' className="form-control" id="name" />
+                <span className='text-danger'>{errors.name}</span>
               </div>
               <div className="mb-3">
                 <label htmlFor="model" className="form-label">Model Year</label>
                 <input type="text" value={car.model_year} onChange={handleChange} name='model_year' className="form-control" id="model" />
+                <span className='text-danger'>{errors.model_year}</span>
               </div>
               <div className="mb-3">
                 <select class="form-select" value={car.brand} onChange={handleChange} name='brand' aria-label="Default select example">
@@ -75,18 +77,22 @@ function UpdateCar() {
                     })
                   }
                 </select>
+                <span className='text-danger'>{errors.brand}</span>
               </div>
               <div className="mb-3">
                 <label htmlFor="color" className="form-label">Color</label>
                 <input type="text" value={car.color} onChange={handleChange} name='color' className="form-control" id="color" />
+                <span className='text-danger'>{errors.color}</span>
               </div>
               <div className="mb-3">
                 <label htmlFor="capacity" className="form-label">Capacity</label>
                 <input type="text" value={car.capacity} onChange={handleChange} name='capacity' className="form-control" id="capacity" />
+                <span className='text-danger'>{errors.capacity}</span>
               </div>
               <div className="mb-3">
                 <label htmlFor="plate" className="form-label">Plate Number</label>
                 <input type="text" value={car.plate_number} onChange={handleChange} name='plate_number' className="form-control" id="plate" />
+                <span className='text-danger'>{errors.plate_number}</span>
               </div>
               <button type="submit" className="btn btn-primary">Update</button>
             </form>
