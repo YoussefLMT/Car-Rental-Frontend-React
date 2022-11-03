@@ -13,7 +13,7 @@ function Reservations() {
         car_id: '',
         start_date: '',
         end_date: '',
-        total_mount: '',
+        total_amount: '',
         error_list: [],
     });
 
@@ -25,6 +25,27 @@ function Reservations() {
     const handleChange = (e) => {
         e.persist();
         setForm({ ...form, [e.target.name]: e.target.value });
+    }
+
+    const addReservation = async (e) => {
+        e.preventDefault();
+
+        const data = {
+            first_name: form.first_name,
+            last_name: form.last_name,
+            phone: form.phone,
+            car_id: form.car_id,
+            start_date: form.start_date,
+            end_date: form.end_date,
+            total_amount: form.total_amount
+        }
+
+        const response = await axiosInstance.post('/add-reservation', data)
+        if (response.data.status === 200) {
+            alert(response.data.message)
+        } else {
+            alert(response.data.validation_err);
+        }
     }
 
     useEffect(() => {
@@ -57,7 +78,7 @@ function Reservations() {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <form>
+                                <form onSubmit={addReservation}>
                                     <div className="mb-3">
                                         <label htmlFor="fname" className="form-label">First Name</label>
                                         <input type="text" value={form.first_name} onChange={handleChange} name='first_name' className="form-control" id="fname" />
@@ -92,7 +113,7 @@ function Reservations() {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="amount" className="form-label">Total amount</label>
-                                        <input type="text" value={form.total_mount} onChange={handleChange} name='total_amount' className="form-control" id="amount" />
+                                        <input type="text" value={form.total_amount} onChange={handleChange} name='total_amount' className="form-control" id="amount" />
                                     </div>
                                     <div className="modal-footer">
                                         <button type="submit" className="btn btn-primary">Save changes</button>
