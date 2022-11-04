@@ -1,5 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
+import { Chart as ChartJS } from 'chart.js/auto'
 
 function BarChart() {
 
@@ -7,7 +8,7 @@ function BarChart() {
 
     return (
         <div>
-            <h1>Proportion of reservations</h1>
+            <h4>Proportion of reservations</h4>
 
             <Bar
                 options={{
@@ -17,21 +18,21 @@ function BarChart() {
                 data={{
                     labels: labels,
                     datasets: [{
-                        label: "Nombre des visites par mois",
+                        label: "Number of reservations per month",
                         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
                         backgroundColor: [
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
-                            '#1F7B5F',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
+                            '#1851A8',
                         ],
                         borderColor: [
                             '#1F7B5F',

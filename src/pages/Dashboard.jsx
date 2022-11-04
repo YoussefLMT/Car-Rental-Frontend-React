@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axios'
+import BarChart from '../components/BarChart'
 import Card from '../components/Card'
 import Sidebar from '../components/Sidebar'
 
@@ -40,6 +41,16 @@ function Dashboard() {
           </div>
           <div class="col-md-3">
             <Card icon="fa-solid fa-dollar-sign" title="Income" count={income} />
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-6">
+              <BarChart />
+            </div>
+            <div class="col-md-6">
+            </div>
           </div>
         </div>
       </div>
