@@ -48,18 +48,18 @@ function UpdateReservation() {
                         <form>
                             <div className="mb-3">
                                 <label htmlFor="fname" className="form-label">First Name</label>
-                                <input type="text" value={reservation.first_name} onChange={handleChange} name='first_name' className="form-control" id="fname" />
+                                <input type="text" value={reservation[0].first_name} onChange={handleChange} name='first_name' className="form-control" id="fname" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="lname" className="form-label">Last Name</label>
-                                <input type="text" value={reservation.last_name} onChange={handleChange} name='last_name' className="form-control" id="lname" />
+                                <input type="text" value={reservation[0].last_name} onChange={handleChange} name='last_name' className="form-control" id="lname" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="phone" className="form-label">Phone</label>
-                                <input type="text" value={reservation.phone} onChange={handleChange} name='phone' className="form-control" id="phone" />
+                                <input type="text" value={reservation[0].phone} onChange={handleChange} name='phone' className="form-control" id="phone" />
                             </div>
                             <div className="mb-3">
-                                <select class="form-select" value={reservation.car_id} onChange={handleChange} name='car_id' aria-label="Default select example">
+                                <select class="form-select" value={reservation[0].car_id} onChange={handleChange} name='car_id' aria-label="Default select example">
                                     <option selected>Car</option>
                                     {
                                         cars.map((car) => {
@@ -72,15 +72,15 @@ function UpdateReservation() {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="start_date" className="form-label">Start Date</label>
-                                <input type="date" value={reservation.start_date} onChange={handleChange} name='start_date' className="form-control" id="start_date" />
+                                <input type="date" value={reservation[0].start_date} onChange={handleChange} name='start_date' className="form-control" id="start_date" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="end_date" className="form-label">End Date</label>
-                                <input type="date" value={reservation.end_date} onChange={handleChange} name='end_date' className="form-control" id="end_date" />
+                                <input type="date" value={reservation[0].end_date} onChange={handleChange} name='end_date' className="form-control" id="end_date" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="amount" className="form-label">Total amount</label>
-                                <input type="text" value={reservation.total_amount} onChange={handleChange} name='total_amount' className="form-control" id="amount" />
+                                <input type="text" value={reservation[0].total_amount} onChange={handleChange} name='total_amount' className="form-control" id="amount" />
                             </div>
                             <div className="modal-footer">
                                 <button type="submit" className="btn btn-primary">Save changes</button>
