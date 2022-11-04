@@ -25,6 +25,10 @@ function UpdateReservation() {
         setCars(response.data.cars)
     }
 
+    const handleChange = (e) => {
+        e.persist();
+        setReservation({ ...reservation, [e.target.name]: e.target.value });
+    }
 
     useEffect(() => {
         getReservation()
