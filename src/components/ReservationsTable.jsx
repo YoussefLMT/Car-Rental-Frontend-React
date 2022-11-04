@@ -44,6 +44,7 @@ function ReservationsTable(props) {
                                 <td>{reservation.total_amount}</td>
                                 <td>
                                     <button type="button" onClick={(e) => deleteReservation(e, reservation.id)} class="btn btn-danger">Delete</button>
+                                    <Link className="btn btn-warning" to={`update-reservation/${reservation.id}`}>Update</Link>              
                                 </td>
                             </tr>
                         )
