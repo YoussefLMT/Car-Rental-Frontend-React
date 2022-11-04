@@ -30,10 +30,10 @@ function Dashboard() {
         <h1>Dashboard</h1>
         <div class="row">
           <div class="col-md-3">
-            <Card icon="fa-solid fa-burger" title="Meals" count={carsCount} />
+            <Card icon="fa-solid fa-car" title="Cars" count={carsCount} />
           </div>
           <div class="col-md-3">
-            <Card icon="fa-brands fa-shopify" title="Orders" count={reservationsCount} />
+            <Card icon="fa-solid fa-calendar-days" title="Reservations" count={reservationsCount} />
           </div>
           <div class="col-md-3">
             <Card icon="fa-solid fa-users" title="Users" count={usersCount} />
