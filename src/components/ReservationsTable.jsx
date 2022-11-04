@@ -6,27 +6,29 @@ function ReservationsTable() {
             <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">name</th>
-                    <th scope="col">model year</th>
-                    <th scope="col">brand</th>
-                    <th scope="col">color</th>
-                    <th scope="col">capacity</th>
-                    <th scope="col">plate number</th>
+                    <th scope="col">first name</th>
+                    <th scope="col">last name</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">car</th>
+                    <th scope="col">start date</th>
+                    <th scope="col">end date</th>
+                    <th scope="col">total amount</th>
                     <th scope="col">actions</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    props.cars.map((car) => {
+                    props.reservations.map((reservation) => {
                         return (
-                            <tr key={car.id}>
-                                <th scope="row">{car.id}</th>
-                                <td>{car.name}</td>
-                                <td>{car.model_year}</td>
-                                <td>{car.brand}</td>
-                                <td>{car.color}</td>
-                                <td>{car.capacity}</td>
-                                <td>{car.plate_number}</td>
+                            <tr key={reservation.id}>
+                                <th scope="row">{reservation.id}</th>
+                                <td>{reservation.first_name}</td>
+                                <td>{reservation.last_name}</td>
+                                <td>{reservation.phone}</td>
+                                <td>{reservation.car}</td>
+                                <td>{reservation.start_date}</td>
+                                <td>{reservation.end_date}</td>
+                                <td>{reservation.total_amount}</td>
                             </tr>
                         )
                     })
