@@ -2,7 +2,7 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 
-function BarChart() {
+function BarChart(props) {
 
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -19,7 +19,7 @@ function BarChart() {
                     labels: labels,
                     datasets: [{
                         label: "Number of reservations per month",
-                        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                        data: props.monthCount?.map((c) => c.count),
                         backgroundColor: [
                             '#1851A8',
                             '#1851A8',

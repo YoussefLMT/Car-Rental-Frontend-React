@@ -53,7 +53,7 @@ function Dashboard() {
         <div class="container mt-5">
           <div class="row">
             <div class="col-md-6">
-              <BarChart />
+              <BarChart monthCount={monthCount}/>
             </div>
             <div class="col-md-6">
             </div>
