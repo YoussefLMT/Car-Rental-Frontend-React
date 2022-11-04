@@ -40,21 +40,21 @@ function UpdateReservation() {
 
     const handleChange = (e) => {
         e.persist();
-        setReservation({ ...reservation, [e.target.name]: e.target.value });
+        setReservation(e.target.value);
     }
 
-    // const updateReservation = async (e) => {
-    //     e.preventDefault();
-    //     const response = await axiosInstance.put(`update-reservation/${params.id}`, reservation)
-    //     if (response.data.status === 200) {
-    //         Toast.fire({
-    //             icon: 'success',
-    //             title: response.data.message
-    //         })
-    //     } else if (response.data.status === 422) {
-    //         setErrors(response.data.validation_err)
-    //     }
-    // }
+    const updateReservation = async (e) => {
+        e.preventDefault();
+        const response = await axiosInstance.put(`update-reservation/${params.id}`, reservation[0])
+        if (response.data.status === 200) {
+            Toast.fire({
+                icon: 'success',
+                title: response.data.message
+            })
+        } else if (response.data.status === 422) {
+            setErrors(response.data.validation_err)
+        }
+    }
 
     useEffect(() => {
         getReservation()
@@ -71,7 +71,7 @@ function UpdateReservation() {
                         Reservations Management
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form onSubmit={updateReservation}>
                             <div className="mb-3">
                                 <label htmlFor="fname" className="form-label">First Name</label>
                                 <input type="text" value={reservation[0].first_name} onChange={handleChange} name='first_name' className="form-control" id="fname" />
