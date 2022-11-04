@@ -43,7 +43,7 @@ function CarsTable(props) {
                                 <td>{car.plate_number}</td>
                                 <td>
                                     <button type="button" onClick={(e) => deleteCar(e, car.id)} class="btn btn-danger">Delete</button>
-                                    <Link title="Modifier l'animateur" className="btn btn-warning" to={`update-car/${car.id}`}>Update</Link>              
+                                    <Link className="btn btn-warning" to={`update-car/${car.id}`}>Update</Link>              
                                 </td>
                             </tr>
                         )

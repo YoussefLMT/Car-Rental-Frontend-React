@@ -1,6 +1,19 @@
 import React from 'react'
+import axiosInstance from '../axios';
 
 function ReservationsTable(props) {
+
+    const deleteReservation = async (e, id) => {
+        const deleteBtn = e.currentTarget;
+        try {
+            await axiosInstance.delete(`/delete-reservation/${id}`)
+            deleteBtn.closest('tr').remove();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <table className="table">
             <thead>
@@ -29,6 +42,9 @@ function ReservationsTable(props) {
                                 <td>{reservation.start_date}</td>
                                 <td>{reservation.end_date}</td>
                                 <td>{reservation.total_amount}</td>
+                                <td>
+                                    <button type="button" onClick={(e) => deleteReservation(e, reservation.id)} class="btn btn-danger">Delete</button>
+                                </td>
                             </tr>
                         )
                     })
