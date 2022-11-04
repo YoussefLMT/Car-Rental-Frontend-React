@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
@@ -7,7 +7,7 @@ import './styles/reservations.css'
 function UpdateReservation() {
 
     const [reservation, setReservation] = useState([])
-    const [cars, setCars] = useState({})
+    const [cars, setCars] = useState([])
     const [errors, setErrors] = useState([]);
     const params = useParams()
 
@@ -84,7 +84,6 @@ function UpdateReservation() {
                             </div>
                             <div className="modal-footer">
                                 <button type="submit" className="btn btn-primary">Save changes</button>
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
