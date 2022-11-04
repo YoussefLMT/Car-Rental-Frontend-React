@@ -18,7 +18,7 @@ function Reservations() {
         error_list: [],
     });
     const [message, setMessage] = useState('')
-    const [reservations, setReservations] = useState(true)
+    const [reservations, setReservations] = useState([])
     const [loading, setLoading] = useState(true)
 
     const getCars = async () => {
