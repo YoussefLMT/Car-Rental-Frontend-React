@@ -5,10 +5,10 @@ import Sidebar from '../components/Sidebar'
 
 function Dashboard() {
 
-  const [carsCount, setCarsCount] = useState({})
-  const [usersCount, setUsersCount] = useState({})
-  const [reservationsCount, setReservationsCount] = useState({})
-  const [income, setIncome] = useState({})
+  const [carsCount, setCarsCount] = useState(0)
+  const [usersCount, setUsersCount] = useState(0)
+  const [reservationsCount, setReservationsCount] = useState(0)
+  const [income, setIncome] = useState(0)
 
 
   const getTotalCount = async () => {
@@ -30,7 +30,7 @@ function Dashboard() {
         <h1>Dashboard</h1>
         <div class="row">
           <div class="col-md-3">
-            <Card icon="fa-solid fa-car" title="Cars" count={carsCount} />
+            <Card icon="fa-solid fa-car" title='Cars' count={carsCount} />
           </div>
           <div class="col-md-3">
             <Card icon="fa-solid fa-calendar-days" title="Reservations" count={reservationsCount} />
