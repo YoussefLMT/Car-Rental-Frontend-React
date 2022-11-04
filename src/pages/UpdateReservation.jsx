@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
 import './styles/reservations.css'
 
 function UpdateReservation() {
 
-    const [cars, setCars] = useState({})
     const [reservation, setReservation] = useState([])
+    const [cars, setCars] = useState({})
     const [errors, setErrors] = useState([]);
     const params = useParams()
 
@@ -19,8 +20,15 @@ function UpdateReservation() {
         }
     }
 
+    const getCars = async () => {
+        const response = await axiosInstance.get('cars')
+        setCars(response.data.cars)
+    }
+
+
     useEffect(() => {
         getReservation()
+        getCars()
     }, [])
 
     return (
