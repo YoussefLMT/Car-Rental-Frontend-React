@@ -25,7 +25,7 @@ function ReservationsTable(props) {
                                 <td>{reservation.first_name}</td>
                                 <td>{reservation.last_name}</td>
                                 <td>{reservation.phone}</td>
-                                <td>{reservation.car}</td>
+                                <td>{reservation.name}</td>
                                 <td>{reservation.start_date}</td>
                                 <td>{reservation.end_date}</td>
                                 <td>{reservation.total_amount}</td>
