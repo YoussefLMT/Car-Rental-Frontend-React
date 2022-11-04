@@ -2,6 +2,9 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2'
 
 function BarChart() {
+
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
     return (
         <div>
             <h1>Proportion of reservations</h1>
