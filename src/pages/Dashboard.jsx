@@ -10,7 +10,7 @@ function Dashboard() {
   const [usersCount, setUsersCount] = useState(0)
   const [reservationsCount, setReservationsCount] = useState(0)
   const [income, setIncome] = useState(0)
-
+  const [monthCount, setMonthCount] = useState([]);
 
   const getTotalCount = async () => {
     const response = await axiosInstance.get('/statistics')
@@ -20,8 +20,14 @@ function Dashboard() {
     setIncome(response.data.income)
   }
 
+  const getReservationsStatistics = async () => {
+    const response = await axiosInstance.get('/reservations-statistics')
+    setMonthCount(response.data.reservationsCount)
+  }
+
   useEffect(() => {
     getTotalCount()
+    getReservationsStatistics()
   }, [])
 
   return (
