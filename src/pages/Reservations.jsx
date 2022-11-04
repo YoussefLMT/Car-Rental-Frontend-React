@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axios'
+import ReservationsTable from '../components/ReservationsTable'
 import Sidebar from '../components/Sidebar'
 import './styles/reservations.css'
 
@@ -79,7 +80,13 @@ function Reservations() {
                             Add Reservation
                         </button>
                     </div>
+                    <div class="card-body">
+                        <ReservationsTable reservations={reservations} />
+
+                        {loading && <h4>Loading...</h4>}
+                    </div>
                 </div>
+
 
                 {/* Add Reservation Modal  */}
                 <div className="modal fade" id="addReservationModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ReservationsTable() {
+function ReservationsTable(props) {
     return (
         <table className="table">
             <thead>
