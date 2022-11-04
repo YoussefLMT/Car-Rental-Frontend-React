@@ -17,10 +17,18 @@ function Reservations() {
         error_list: [],
     });
     const [message, setMessage] = useState('')
+    const [reservations, setReservations] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const getCars = async () => {
         const response = await axiosInstance.get('/cars')
         setCars(response.data.cars)
+    }
+
+    const getReservations = async () => {
+        const response = await axiosInstance.get('/reservations')
+        setReservations(response.data.reservations)
+        setLoading(false)
     }
 
     const handleChange = (e) => {
@@ -53,6 +61,7 @@ function Reservations() {
 
     useEffect(() => {
         getCars()
+        getReservations()
     }, [])
 
     return (
