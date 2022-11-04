@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import axiosInstance from '../axios'
 import Sidebar from '../components/Sidebar'
 import './styles/reservations.css'
 
 function UpdateReservation() {
 
-    const [reservation, setReservation] = useState([])
+    const [reservation, setReservation] = useState([{}])
     const [cars, setCars] = useState([])
     const [errors, setErrors] = useState([]);
     const params = useParams()
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const getReservation = async () => {
         const response = await axiosInstance.get(`get-reservation/${params.id}`)
@@ -29,6 +42,19 @@ function UpdateReservation() {
         e.persist();
         setReservation({ ...reservation, [e.target.name]: e.target.value });
     }
+
+    // const updateReservation = async (e) => {
+    //     e.preventDefault();
+    //     const response = await axiosInstance.put(`update-reservation/${params.id}`, reservation)
+    //     if (response.data.status === 200) {
+    //         Toast.fire({
+    //             icon: 'success',
+    //             title: response.data.message
+    //         })
+    //     } else if (response.data.status === 422) {
+    //         setErrors(response.data.validation_err)
+    //     }
+    // }
 
     useEffect(() => {
         getReservation()
