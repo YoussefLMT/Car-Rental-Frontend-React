@@ -6,6 +6,7 @@ import Brands from './pages/Brands';
 import Cars from './pages/Cars';
 import UpdateCar from './pages/UpdateCar';
 import Reservations from './pages/Reservations';
+import UpdateReservation from './pages/UpdateReservation';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/cars' element={<Cars />} />
           <Route path='cars/update-car/:id' element={<UpdateCar />} />
           <Route path='/reservations' element={<Reservations />} />
+          <Route path='cars/update-reservation/:id' element={<UpdateReservation />} />
         </Route>
         
       </Routes>
