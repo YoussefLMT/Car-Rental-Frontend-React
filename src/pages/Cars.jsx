@@ -19,6 +19,13 @@ function Cars() {
     const [message, setMessage] = useState('')
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [carsPerPage, setCarsPerPage] = useState(5)
+
+    const indexOfLastCar = currentPage * carsPerPage
+    const indexOfFirstCar = indexOfLastCar - carsPerPage
+    const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar)
+
 
     const handleChange = (e) => {
         e.persist();
@@ -80,7 +87,7 @@ function Cars() {
                         </button>
                     </div>
                     <div class="card-body">
-                        <CarsTable cars={cars} />
+                        <CarsTable cars={currentCars} />
 
                         {loading && <h4>Loading...</h4>}
                     </div>
