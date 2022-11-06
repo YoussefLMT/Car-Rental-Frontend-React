@@ -27,6 +27,7 @@ function Cars() {
     const indexOfFirstCar = indexOfLastCar - carsPerPage
     const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar)
 
+    const paginate = number => setCurrentPage(number)
 
     const handleChange = (e) => {
         e.persist();
@@ -89,7 +90,7 @@ function Cars() {
                     </div>
                     <div class="card-body">
                         <CarsTable cars={currentCars} />
-                        <Pagination carsPerPage={carsPerPage} totalCars={cars.length}/>
+                        <Pagination carsPerPage={carsPerPage} totalCars={cars.length} paginate={paginate}/>
                         {loading && <h4>Loading...</h4>}
                     </div>
                 </div>
