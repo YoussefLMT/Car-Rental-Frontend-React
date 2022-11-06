@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axios';
 import CarsTable from '../components/CarsTable';
+import Pagination from '../components/Pagination';
 import Sidebar from '../components/Sidebar'
 import './styles/cars.css'
 
@@ -88,7 +89,7 @@ function Cars() {
                     </div>
                     <div class="card-body">
                         <CarsTable cars={currentCars} />
-
+                        <Pagination carsPerPage={carsPerPage} totalCars={cars.length}/>
                         {loading && <h4>Loading...</h4>}
                     </div>
                 </div>

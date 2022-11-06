@@ -4,7 +4,7 @@ function Pagination(props) {
 
     const pageNumbers = []
 
-    for (let i = 0; i < Math.ceil(props.totalCars / props.carsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(props.totalCars / props.carsPerPage); i++) {
         pageNumbers.push(i)
     }
 
@@ -12,11 +12,11 @@ function Pagination(props) {
         <nav>
             <ul className="pagination">
                 {
-                    pageNumbers.map((number) => {
+                    pageNumbers.map((number) => (
                         <li key={number} className="page-item">
                             <a className="page-link" href="#">{ number }</a>
                         </li>
-                    })
+                    ))
                 }
             </ul>
         </nav>
