@@ -21,7 +21,7 @@ function Cars() {
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
-    const [carsPerPage, setCarsPerPage] = useState(5)
+    const [carsPerPage] = useState(5)
 
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
