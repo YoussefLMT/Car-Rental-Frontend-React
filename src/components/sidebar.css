@@ -64,7 +64,7 @@ a {
     text-decoration: none;
 }
 
-/* .active {
+.active {
     border-right: 4px solid white;
-    background: rgb(45, 51, 89);
-} */
+    background: #64748b;
+}
