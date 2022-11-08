@@ -53,7 +53,7 @@ function Reservations() {
         const response = await axiosInstance.post('/add-reservation', data)
         if (response.data.status === 200) {
             setMessage(response.data.message)
-
+            getReservations()
         } else {
             setForm({ ...form, error_list: response.data.validation_err });
 
