@@ -2,8 +2,10 @@ import React from 'react'
 import { AiFillDashboard, AiFillCar } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
 import { FaCarSide, FaCalendarAlt } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './sidebar.css';
+import axiosInstance from '../axios';
+import Swal from 'sweetalert2';
 
 const sidebarData = [
     {
@@ -33,6 +35,33 @@ const sidebarData = [
     },
 ];
 
+const logout = async () => {
+    try {
+        const response = await axiosInstance.post("/logout")
+        if (response.data.status === 200) {
+            localStorage.removeItem('token')
+            localStorage.removeItem('role')
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.data.message
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 function Sidebar() {
     return (
         <div className="sidebar-container">
@@ -49,7 +78,7 @@ function Sidebar() {
                             </div>
                         </NavLink>
                     ))}
-                    <button className='btn btn-primary' style={{width: '60%', margin: "320px auto"}}>logout</button>
+                    <button onClick={logout} className='btn btn-primary' style={{width: '60%', margin: "320px auto"}}>logout</button>
                 </section>
             </div>
         </div>
