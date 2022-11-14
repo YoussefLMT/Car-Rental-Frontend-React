@@ -49,6 +49,7 @@ function Sidebar() {
                             </div>
                         </NavLink>
                     ))}
+                    <button className='btn btn-primary' style={{width: '60%', margin: "320px auto"}}>logout</button>
                 </section>
             </div>
         </div>
