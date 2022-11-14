@@ -2,7 +2,7 @@ import React from 'react'
 import { AiFillDashboard, AiFillCar } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
 import { FaCarSide, FaCalendarAlt } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './sidebar.css';
 import axiosInstance from '../axios';
 import Swal from 'sweetalert2';
@@ -35,6 +35,8 @@ const sidebarData = [
     },
 ];
 
+const navigate = useNavigate()
+
 const logout = async () => {
     try {
         const response = await axiosInstance.post("/logout")
@@ -56,6 +58,7 @@ const logout = async () => {
                 icon: 'success',
                 title: response.data.message
             })
+            navigate('/')
         }
     } catch (error) {
         console.log(error)
